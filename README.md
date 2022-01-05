@@ -1,4 +1,19 @@
+# Coupon Code Validator
+
+A simple react app to validate and calculate discount amount.
+
+## Technologies Used
+* React
+* NodeJS
+* MongoDB Atlas
+
+
 ## Local Setup
+
+### `clone the repo`
+```
+https://github.com/Chayan-19/coupon-validator-client.git
+```
 
 In the project directory, you can run:
 
@@ -14,7 +29,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-This application has a React frontend and a NodeJS backend along with MongoDB Atlas as a database to store the discount coupons.
 
 ## Problems encountered during development
 
