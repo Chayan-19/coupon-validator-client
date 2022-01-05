@@ -98,11 +98,11 @@ const CreateDiscount = () => {
                         />
 
                         <input type="submit" className="btn" value="Submit" />
-                        <a href="http://localhost:3000/list-discount-codes">
+                        <a href="https://cocky-lamarr-248d2d.netlify.app/list-discount-codes">
                             <input type="button" className="btn" value="Go to List" />
                         </a>
 
-                        <a href="http://localhost:3000/discount">
+                        <a href="https://cocky-lamarr-248d2d.netlify.app/discount">
                             <input type="button" className="btn" value="Calculate Discount" />
                         </a>
                     </div>

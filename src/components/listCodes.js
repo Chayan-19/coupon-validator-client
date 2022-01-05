@@ -16,14 +16,14 @@ const ListCodes = () => {
     return (
         <div>
             <ul>
-                {listCodes.map((items, index) => <li key={index}>{items.code} is valid from {items.startDate} 
+                {listCodes.map((items, index) => <li key={index}>{items.code} is valid from {items.startDate}
                  to {items.endDate}. Minimum cart value should be {items.minAmt}</li>)}
             </ul>
-            <a href="http://localhost:3000/discount">
+            <a href="https://cocky-lamarr-248d2d.netlify.app/discount">
                 <input type="button" className="btn" value="Calculate Discount" />
             </a>
 
-            <a href="http://localhost:3000/create-discount-code">
+            <a href="https://cocky-lamarr-248d2d.netlify.app/create-discount-code">
                 <input type="button" className="btn" value="Create Coupon" />
             </a>
         </div>
