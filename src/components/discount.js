@@ -6,7 +6,7 @@ import moment from 'moment';
 const Discount = () => {
     const [cartTotal, setCartTotal] = useState(0);
     const [couponCode, setCouponCode] = useState("");
-    const [coupon, setCoupon ] = useState({});
+    const coupon = useState({});
 
     const makeValidation = async() => {
         const res = await axios.post("https://my-server1903.herokuapp.com/discount/query-code", { code: couponCode });
