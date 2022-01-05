@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import "../css/createDiscount.css";
+import moment from 'moment';
 
 const Discount = () => {
     const [cartTotal, setCartTotal] = useState(0);
@@ -8,7 +9,7 @@ const Discount = () => {
     const [coupon, setCoupon ] = useState({});
 
     const makeValidation = async() => {
-        const res = await axios.post("http://localhost:5000/discount/query-code", { code: couponCode });
+        const res = await axios.post("https://my-server1903.herokuapp.com/discount/query-code", { code: couponCode });
         return res.data;
     }
 
@@ -24,33 +25,37 @@ const Discount = () => {
 
     useEffect(() =>  {
         // console.log(123);
-        console.log(coupon);
+        // console.log(coupon);
     }, [coupon])
 
     const applyDiscount =(coupon) => {
-        console.log(coupon)
-        const d1 = new Date(coupon.startDate);
-        const d2 = new Date(coupon.endDate);
-        const today = new Date();
-        if(cartTotal >= coupon.minAmt && (today>d1 && today<d2)){
-            if(coupon.type.toLowerCase() === "percentage"){
-                const percent = parseInt(coupon.code.split("%")[0]);
-                const decrement = (percent*cartTotal) / 100;
-                if(decrement>coupon.maxDiscount){
-                    alert(`Final Amount = ${cartTotal - coupon.maxDiscount}`)
+        // console.log(coupon)
+        const d1 = moment(coupon.startDate, "DD/MM/YYYY", true).format();
+        const d2 = moment(coupon.endDate, "DD/MM/YYYY", true).format();
+        const today = moment().format();
+        if(today>d1 && today<d2){
+            if(cartTotal >= coupon.minAmt ){
+                if(coupon.type.toLowerCase() === "percentage"){
+                    const percent = parseInt(coupon.code.split("%")[0]);
+                    const decrement = (percent*cartTotal) / 100;
+                    if(decrement>coupon.maxDiscount){
+                        alert(`Final Amount = ${cartTotal - coupon.maxDiscount}`)
+                    }else{
+                        alert(`Final Amount = ${cartTotal - decrement}`)
+                    }
+                }else if(coupon.type.toLowerCase() === "flat"){
+                    alert(`Final Amount = ${cartTotal - coupon.maxDiscount}`);
                 }else{
-                    alert(`Final Amount = ${cartTotal - decrement}`)
+                    alert("Please enter a valid code");
                 }
-            }else if(coupon.type.toLowerCase() === "flat"){
-                alert(`Final Amount = ${cartTotal - coupon.maxDiscount}`);
             }else{
-                alert("Please enter a valid code");
+                alert("Cart Total less than minimum amount");
             }
-
         }else{
-            alert("Cart Total less than minimum amount");
+            alert("Coupon Code has expired");
         }
     }
+
 
 
 

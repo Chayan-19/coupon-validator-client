@@ -17,11 +17,13 @@ const CreateDiscount = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        axios.post("http://localhost:5000/discount/create", { discountCode })
+        axios.post("https://my-server1903.herokuapp.com/discount/create", { discountCode })
             .then((response)=>{
+                alert("Coupon Created Successfully!!")
                 console.log(response);
             })
             .catch((error)=>{
+                alert("Coupon Creation failed");
                 console.log(error);
             })
     }

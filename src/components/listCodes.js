@@ -5,7 +5,7 @@ import "../css/createDiscount.css";
 const ListCodes = () => {
     const [listCodes, setListCodes] = useState([])
     const makeRequest = async() => {
-        const res = await axios.get("http://localhost:5000/discount");
+        const res = await axios.get("https://my-server1903.herokuapp.com/discount");
         setListCodes(res.data);
     }
 
@@ -16,7 +16,7 @@ const ListCodes = () => {
     return (
         <div>
             <ul>
-                {listCodes.map((items, index) => <li key={index}>{items.code} is valid from {items.startDate}
+                {listCodes.map((items, index) => <li key={index}>{items.code} is valid from {items.startDate} 
                  to {items.endDate}. Minimum cart value should be {items.minAmt}</li>)}
             </ul>
             <a href="http://localhost:3000/discount">
